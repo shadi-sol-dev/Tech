@@ -22,14 +22,18 @@ public class ImageRepository : IImageRepository
     {
         try
         {
-
             return await _dbContext.Images.FirstOrDefaultAsync(e => e.id == id);
-
         }
         catch (Exception e)
         {
             Console.WriteLine(e);
             throw;
         }
+    }
+
+    public async Task AddAsync(Images image)
+    {
+        _dbContext.Images.Add(image);
+        await _dbContext.SaveChangesAsync();
     }
 }
