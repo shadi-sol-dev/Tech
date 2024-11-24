@@ -10,13 +10,12 @@ public class ImagePathController(IMediator mediator, ILogger<ImagePathController
 {
     private readonly ILogger<ImagePathController> _logger = logger;
 
-    [allow]
-    [HttpGet("/image/{userIdentifier}")]
+    [HttpGet("/image")]
     public async Task<JsonResult> Get(string userIdentifier)
     {
         var query = new ImagePathQuery(userIdentifier);
         string? path = await mediator.Send(query);
-        return !string.IsNullOrWhiteSpace(path) ? new JsonResult(Ok(path)) : new JsonResult(NotFound());
+        return new JsonResult(new {url = path});
     }
     
 }

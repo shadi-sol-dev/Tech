@@ -40,7 +40,8 @@
                  const response = await fetch(`http://localhost:5192/image?userIdentifier=${userIdentifier}`);
                  const responseBody = await response.json();
                  const avatarUrl = responseBody.url;
-
+                 console.log("ur:");
+                 console.log(avatarUrl);
                // const avatarUrl = 'https://api.dicebear.com/8.x/pixel-art/png?seed=default&size=150';
                 document.getElementById('userAvatarImage').src = avatarUrl;
             }
